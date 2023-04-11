@@ -4,7 +4,7 @@
 #   и Вы должны реализовать функционал для изменения и удаления данных
 
 
-
+import csv
 
 
 def read_csv(filename='hw/phonebook.csv'):
@@ -37,31 +37,32 @@ def find_phone_number():
             print(f'Фамилия: {row[0]}\nИмя: {row[1]}\nНомер телефона: {row[2]}\nКомментарий: {row[3]}\n')
 
 
-def add_data(filename='phonebook.csv'):
+def add_data(filename='hw/phonebook.csv'):
     with open(filename, 'a', encoding='utf-8') as file:  
         info = input('Введите данные абонента (фамилия, имя, номер, комментарий - через запятую): ').split(', ')
         file.write(','.join(info) + '\n')
         print('Данные записаны.')
 
-def change_data(filename='phonebook.csv'):
+def change_data(filename='hw/phonebook.csv'):
     last_name = input('Введите фамилию: ')
     with open(filename, 'r', encoding='utf-8') as file: 
-        for row in file:
-            if row[0] == last_name:
+        reader = csv.reader(file)
+        for row in reader:
+            if row[0]==last_name:
                 print(f'Фамилия: {row[0]}\nИмя: {row[1]}\nНомер телефона: {row[2]}\nКомментарий: {row[3]}\n')
-                print(f'Что сделать с информацией по данному абоненту?\n 1 - удалить все данные\n'
-                    '2 - Сменить Фамилию\n3 - Сменить Имя\n4 - Сменить Телефон\n5 - Редактировать комментарий\n')
+                print(f'Что сделать с информацией по данному абоненту?\n1 - удалить все данные\n'
+                        '2 - Сменить Фамилию\n3 - Сменить Имя\n4 - Сменить Телефон\n5 - Редактировать комментарий\n')
                 num = input()
                 if num == '1':
-                    row = ""
+                    row=""
                 elif num == '2':
-                    row[0] = input("Введите Фамилию абонента: ")
+                    row[0].write = input("Введите Фамилию абонента: ")
                 elif num == '3':
-                    row[1] = input("Введите Имя абонента: ")
+                    row[1].write = input("Введите Имя абонента: ")
                 elif num == '4':
-                    row[2] = input("Введите Телефон абонента: ")                
+                    row[2].write = input("Введите Телефон абонента: ")                
                 elif num == '5':
-                    row[3] = input("Введите Описание абонента: ")
+                    row[3].write = input("Введите Описание абонента: ")
 
 
 
