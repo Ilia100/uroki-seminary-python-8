@@ -58,7 +58,7 @@ def change_data(filename='hw/phonebook.csv'):
                                 '2 - Сменить Фамилию\n3 - Сменить Имя\n4 - Сменить Телефон\n5 - Редактировать комментарий\n')
                     num = input()
                     if num == '1':
-                        row=""
+                        row="delited"
                     elif num == '2':
                         row[0]=(input("Введите Фамилию абонента: "))
                     elif num == '3':
@@ -71,6 +71,7 @@ def change_data(filename='hw/phonebook.csv'):
     os.rename(filename, 'hw/temp.csv')
     os.rename(filename2, filename)
     os.remove('hw/temp.csv')
+
 
 
 
