@@ -45,24 +45,30 @@ def add_data(filename='hw/phonebook.csv'):
 
 def change_data(filename='hw/phonebook.csv'):
     last_name = input('Введите фамилию: ')
-    with open(filename, 'r', encoding='utf-8') as file: 
+    with open(filename, 'r+', encoding='utf-8') as file: 
         reader = csv.reader(file)
-        for row in reader:
-            if row[0]==last_name:
-                print(f'Фамилия: {row[0]}\nИмя: {row[1]}\nНомер телефона: {row[2]}\nКомментарий: {row[3]}\n')
-                print(f'Что сделать с информацией по данному абоненту?\n1 - удалить все данные\n'
-                        '2 - Сменить Фамилию\n3 - Сменить Имя\n4 - Сменить Телефон\n5 - Редактировать комментарий\n')
-                num = input()
-                if num == '1':
-                    row=""
-                elif num == '2':
-                    row[0].write = input("Введите Фамилию абонента: ")
-                elif num == '3':
-                    row[1].write = input("Введите Имя абонента: ")
-                elif num == '4':
-                    row[2].write = input("Введите Телефон абонента: ")                
-                elif num == '5':
-                    row[3].write = input("Введите Описание абонента: ")
+        with open('hw/phonebook2.csv', 'w+', encoding='utf-8') as f: 
+            writer = csv.writer(f)
+            for row in reader:
+                if row[0]==last_name:
+                    print(1111)
+                    print(f'Фамилия: {row[0]}\nИмя: {row[1]}\nНомер телефона: {row[2]}\nКомментарий: {row[3]}\n')
+                    print(f'Что сделать с информацией по данному абоненту?\n1 - удалить все данные\n'
+                                '2 - Сменить Фамилию\n3 - Сменить Имя\n4 - Сменить Телефон\n5 - Редактировать комментарий\n')
+                    num = input()
+                    if num == '1':
+                        row=""
+                    elif num == '2':
+                        row[0]=(input("Введите Фамилию абонента: "))
+                    elif num == '3':
+                        row[1] = (input("Введите Имя абонента: "))
+                    elif num == '4':
+                        row[2] = input("Введите Телефон абонента: ")                
+                    elif num == '5':
+                        row[3] = input("Введите Описание абонента: ")
+                writer.writerow(row)
+
+
 
 
 
